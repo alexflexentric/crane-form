@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<style>
+		.bee-row,
+		.bee-row-content {
+			position: relative
+		}
+
+		.bee-row-1,
+		.bee-row-1 .bee-row-content {
+			background-repeat: no-repeat
+		}
+
+		body {
+			background-color: #FFFFFF;
+			color: #000000;
+			font-family: Arial, Helvetica Neue, Helvetica, sans-serif
+		}
+
+		a {
+			color: #0068A5
+		}
+
+		* {
+			box-sizing: border-box
+		}
+
+		body,
+		h1 {
+			margin: 0
+		}
+
+		.bee-row-content {
+			max-width: 500px;
+			margin: 0 auto;
+			display: flex
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 div.label:not(.inline),
+		.bee-row-1 .bee-col-1 .bee-block-2 label:not(.inline),
+		.bee-row-content .bee-col-w12 {
+			flex-basis: 100%
+		}
+
+		.bee-form .bee-form-row .bee-field.readonly-field input[type=radio],
+		.bee-form .bee-form-row .bee-field.readonly-field .bee-form-option-wrapper>label {
+			pointer-events: none;
+			cursor: not-allowed
+		}
+
+		.bee-form .bee-form-row .bee-field label.required-label::after {
+			content: ' *';
+			color: #c00;
+			font-weight: 700
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 .bee-button-container {
+			text-align: center
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 .bee-form-row:not(.bee-sidelabel) input:not([type=checkbox]):not([type=radio]) {
+			width: 100%
+		}
+
+		.bee-form .bee-form-row .bee-field {
+			padding: 3px;
+			display: flex;
+			flex: 1;
+			flex-wrap: wrap;
+			align-items: center
+		}
+
+		.bee-form .bee-form-row .bee-field.bee-inline-field {
+			flex-wrap: nowrap;
+			align-items: flex-start;
+			display: block
+		}
+
+		.bee-form .bee-form-row .bee-field .bee-form-options-vertical-orientation-wrapper,
+		.bee-row-1 .bee-col-1 .bee-block-2 .bee-form-choices-wrapper {
+			display: flex;
+			flex-direction: column
+		}
+
+		.bee-form .bee-form-row .bee-field .bee-form-option-wrapper {
+			align-items: flex-start;
+			display: inline-flex
+		}
+
+		.bee-form .bee-form-row .bee-field .bee-form-option-wrapper>input,
+		.bee-form .bee-form-row .bee-field input[type=radio] {
+			margin: 0 0 0 3px
+		}
+
+		.bee-form .bee-form-row .bee-field .bee-form-option-wrapper>label {
+			min-width: 0
+		}
+
+		.bee-form .bee-form-row .bee-field input:not([type=checkbox]):not([type=radio]),
+		.bee-form .bee-form-row .bee-field textarea {
+			flex-grow: 1;
+			font-family: inherit;
+			font-size: inherit
+		}
+
+		.bee-form .bee-form-row .bee-field input[type=checkbox]:not(:first-of-type),
+		.bee-form .bee-form-row .bee-field input[type=radio]:not(:first-of-type) {
+			margin-left: 15px
+		}
+
+		.bee-form .bee-form-row .bee-field button {
+			font-family: inherit;
+			font-size: inherit;
+			cursor: pointer
+		}
+
+		.bee-form .bee-form-row .bee-field .bee-button-container {
+			flex-grow: 1
+		}
+
+		@media (max-width:520px) {
+			.bee-form form {
+				width: 100% !important
+			}
+
+			.bee-row-content:not(.no_stack) {
+				display: block
+			}
+		}
+
+		.bee-row-1 {
+			background-color: #e6f2f6
+		}
+
+		.bee-row-1 .bee-row-content {
+			color: #000000
+		}
+
+		.bee-row-1 .bee-col-1 {
+			border-bottom: 0 solid transparent;
+			border-left: 0 solid transparent;
+			border-right: 0 solid transparent;
+			border-top: 0 solid transparent;
+			padding-bottom: 5px;
+			padding-top: 5px
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-1 {
+			text-align: left;
+			width: 100%
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 {
+			font-family: inherit;
+			font-size: 14px;
+			font-weight: 400;
+			padding: 10px;
+			text-align: left
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-1 h1 {
+			color: #555555;
+			direction: ltr;
+			font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+			font-size: 23px;
+			font-weight: 700;
+			letter-spacing: normal;
+			line-height: 120%;
+			text-align: left
+		}
+
+		.bee-page-container h1 {
+			margin-top: 20px
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 form {
+			display: inline-block;
+			width: 100%
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 div.label,
+		.bee-row-1 .bee-col-1 .bee-block-2 label {
+			color: #000000;
+			letter-spacing: 0;
+			line-height: 200%;
+			text-align: left;
+			display: block
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 ::-webkit-input-placeholder {
+			color: #000000
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 :-moz-placeholder {
+			color: #000000
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 ::-moz-placeholder {
+			color: #000000
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 :-ms-input-placeholder {
+			color: #000000
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 .bee-field>label:first-child,
+		.bee-row-1 .bee-col-1 .bee-block-2 div.label {
+			padding: 3px
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 .bee-field.bee-inline-field input[type=checkbox],
+		.bee-row-1 .bee-col-1 .bee-block-2 .bee-field.bee-inline-field input[type=radio] {
+			position: relative;
+			color: purple;
+			top: 8px
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 input:not([type=checkbox]):not([type=radio]):not([type=image]),
+		.bee-row-1 .bee-col-1 .bee-block-2 textarea {
+			background-color: #ffffff;
+			border-bottom: 1px solid transparent;
+			border-left: 1px solid transparent;
+			border-radius: 4px;
+			border-right: 1px solid transparent;
+			border-top: 1px solid transparent;
+			color: #000000;
+			padding: 5px;
+			min-height: 38px
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 input:not([type=checkbox]):not([type=radio]):focus,
+		.bee-row-1 .bee-col-1 .bee-block-2 textarea:focus {
+			outline-color: #3AAEE0
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 button {
+			background-color: #3AAEE0;
+			border-bottom: 0 solid transparent;
+			border-left: 0 solid transparent;
+			border-radius: 4px;
+			border-right: 0px solid transparent;
+			border-top: 0 solid transparent;
+			color: #ffffff;
+			letter-spacing: 0;
+			line-height: 200%;
+			padding: 5px 20px;
+			width: 100%
+		}
+
+		.bee-row-1 .bee-col-1 .bee-block-2 .bee-form-options-align-wrapper {
+			display: flex;
+			width: 100%;
+			justify-content: flex-start
+		}
+
+		.file-status {
+			font-size: 12px;
+			margin-top: 4px;
+			display: block;
+			color: #1a7f37
+		}
+
+		.file-status.error {
+			color: #b42318
+		}
+	</style>
+	<script src="https://webtracking-v01.creatio.com/JS/crt-landing-page.js"></script>
+	<script>
+		crtLanding.webhookServiceUrl = 'https://webhooks.creatio.com/webhooks/838482be-3079-4ed5-9e61-a95b4ecbe693';
+		crtLanding.setParameter('LandingPageId', '5331bdcd-0090-46b0-af5e-1efacdd01202');
+	</script>
+</head>
+
+<body>
+	<div class="bee-page-container">
+		<div class="bee-row bee-row-1">
+			<div class="bee-row-content">
+				<div class="bee-col bee-col-1 bee-col-w12">
+					<div class="bee-block bee-block-2 bee-form">
+								<form id="landingForm" accept-charset="utf-8" action="" autocomplete="true" enctype="multipart/form-data" method="POST" target="">
+						<div class="bee-block bee-block-1 bee-heading">
+							<h1><span class="tinyMce-placeholder">Applicant</span> </h1>
+						</div>
+							<div class="bee-form-row">
+								<!--  01 mandatory -->
+								<div class="bee-field bee-field-r0c0m1r1f1"><label for="r0c0m1r1f1">CRANE: 01 First name</label><input id="r0c0m1r1f1" name="CRANE_01_FirstName" type="text" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  02 mandatory -->
+								<div class="bee-field bee-field-r0c0m1r2f1"><label for="r0c0m1r2f1">CRANE: 02 Last name</label><input id="r0c0m1r2f1" name="CRANE_02_LastName" type="text" required></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r3f1"><label for="r0c0m1r3f1">CRANE: 03 Company</label><input id="r0c0m1r3f1" name="CRANE_03_Company" type="text"></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  04 mandatory, validation script -->
+								<div class="bee-field bee-field-r0c0m1r4f1"><label for="r0c0m1r4f1">CRANE: 04 Phone</label><input id="r0c0m1r4f1" name="CRANE_04_Phone" type="tel" required pattern="^\+?[0-9\s().-]{7,}$" title="Enter a valid phone number (digits, spaces, +, () or -)."></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  05 mandatory, validation script -->
+								<div class="bee-field bee-field-r0c0m1r5f1"><label for="r0c0m1r5f1">CRANE: 05 Email</label><input id="r0c0m1r5f1" name="CRANE_05_Email" type="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Enter a valid email address."></div>
+							</div>
+					<div class="bee-block bee-block-1 bee-heading">
+						<h1><span class="tinyMce-placeholder">Site responsible</span> </h1>
+					</div>
+							<div class="bee-form-row">
+								<!--  06 mandatory -->
+								<div class="bee-field bee-field-r0c0m1r6f1"><label for="r0c0m1r6f1">CRANE: 06 First name</label><input id="r0c0m1r6f1" name="CRANE_06_FirstName" type="text" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  07 mandatory -->
+								<div class="bee-field bee-field-r0c0m1r7f1"><label for="r0c0m1r7f1">CRANE: 07 Last name</label><input id="r0c0m1r7f1" name="CRANE_07_LastName" type="text" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  08 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r8f1"><label for="r0c0m1r8f1">CRANE: 08 Phone</label><input id="r0c0m1r8f1" name="CRANE_08_Phone" type="tel" required pattern="^\+?[0-9\s().-]{7,}$" title="Enter a valid phone number (digits, spaces, +, () or -)."></div>
+							</div>
+					<div class="bee-block bee-block-1 bee-heading">
+						<h1><span class="tinyMce-placeholder">Project</span> </h1>
+					</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r9f1"><label for="r0c0m1r9f1">CRANE: 09 Project name</label><input id="r0c0m1r9f1" name="CRANE_09_ProjectName" type="text"></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r10f1"><label for="r0c0m1r10f1">CRANE: 10 Description</label><textarea id="r0c0m1r10f1" name="CRANE_10_Description"></textarea></div>
+							</div>
+					<div class="bee-block bee-block-1 bee-heading">
+						<h1><span class="tinyMce-placeholder">Purpose/description of the works</span> </h1>
+					</div>
+							<div class="bee-form-row">
+								<!--  11 mandatory -->
+								<div class="bee-field bee-field-r0c0m1r11f1"><label for="r0c0m1r11f1">CRANE: 11 Purpose/Description of the works</label><textarea id="r0c0m1r11f1" name="CRANE_11_Purpose" required></textarea></div>
+							</div>
+					<div class="bee-block bee-block-1 bee-heading">
+						<h1><span class="tinyMce-placeholder">Application date</span> </h1>
+					</div>
+							<div class="bee-form-row">
+								<!--  12 mandatory, prefilled today and read-only -->
+									<div class="bee-field bee-field-r0c0m1r12f1"><label for="r0c0m1r12f1">CRANE: 12 Application date</label><input id="r0c0m1r12f1" name="CRANE_12_ApplicationDate" type="date" required readonly></div>
+							</div>
+					<div class="bee-block bee-block-1 bee-heading">
+						<h1><span class="tinyMce-placeholder">Reference files</span> </h1>
+					</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r13f1"><label for="r0c0m1r13f1">CRANE: 13 skeyes IUR</label><textarea id="r0c0m1r13f1" name="CRANE_13_skeyesIUR"></textarea></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r14f1"><label for="r0c0m1r14f1">CRANE: 14 BAC Servitudes DBSA</label><textarea id="r0c0m1r14f1" name="CRANE_14_BACservitudesDBSA"></textarea></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r15f1"><label for="r0c0m1r15f1">CRANE: 15 BCAA (DGLV) OBST</label><textarea id="r0c0m1r15f1" name="CRANE_15_BCAAdglvOBST"></textarea></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r16f1"><label for="r0c0m1r16f1">CRANE: 16 OMV number</label><textarea id="r0c0m1r16f1" name="CRANE_16_OMVnumber"></textarea></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r17f1"><label for="r0c0m1r17f1">CRANE: 17 File works airside</label><textarea id="r0c0m1r17f1" name="CRANE_17_FileWorksAirside"></textarea></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r18f1"><label for="r0c0m1r18f1">CRANE: 18 Defence</label><textarea id="r0c0m1r18f1" name="CRANE_18_Defence"></textarea></div>
+							</div>
+					<div class="bee-block bee-block-1 bee-heading">
+						<h1><span class="tinyMce-placeholder">Execution period of the works</span> </h1>
+					</div>					
+								<div class="bee-form-row">
+									<!--  19 mandatory, warning for under 30 days -->
+										<div class="bee-field bee-field-r0c0m1r19f1"><label for="r0c0m1r19f1">CRANE: 19 Start date of works</label><input id="r0c0m1r19f1" name="CRANE_19_StartDateOfWorks" type="date" required><small id="start-date-warning" style="display:none;color:#c0392b;font-size:12px;">We cannot guarantee that we will deliver the response in time (less than 30 days from the application date).</small></div>
+								</div>
+								<div class="bee-form-row">
+									<!--  20 mandatory, validation 20>=19 -->
+									<div class="bee-field bee-field-r0c0m1r20f1"><label for="r0c0m1r20f1">CRANE: 20 End date of works</label><input id="r0c0m1r20f1" name="CRANE_20_EndDateOfWorks" type="date" required></div>
+							</div>
+								<div class="bee-form-row">
+									<!--  21 valiudation script -->
+									<div class="bee-field bee-field-r0c0m1r21f1"><label for="r0c0m1r21f1">CRANE: 21 Working hours from</label><input id="r0c0m1r21f1" name="CRANE_21_WorkingHoursFrom" type="text" placeholder="hh:mm" pattern="^(?:[01]\d|2[0-3]):[0-5]\d$" title="Enter time in hh:mm (00-23:00-59)."></div>
+								</div>
+								<div class="bee-form-row">
+									<!--  22 valiudation script, validation 22>21 -->
+									<div class="bee-field bee-field-r0c0m1r22f1"><label for="r0c0m1r22f1">CRANE: 22 Working hours until</label><input id="r0c0m1r22f1" name="CRANE_22_WorkingHoursUntil" type="text" placeholder="hh:mm" pattern="^(?:[01]\d|2[0-3]):[0-5]\d$" title="Enter time in hh:mm (00-23:00-59)."></div>
+							</div>
+					<div class="bee-block bee-block-1 bee-heading">
+						<h1><span class="tinyMce-placeholder">Crane/object data</span> </h1>
+					</div>	
+							<div class="bee-form-row">
+								<!--  23 mandatory -->
+								<div class="bee-field bee-field-r0c0m1r23f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r23f1">CRANE: 23 Type of object</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_1" type="radio" name="CRANE_23_TypeOfObject" value="9d41cd50-e9c6-42a9-97bb-504727edcca6" required><label class="inline" for="r0c0m1r23f1_1">&nbsp;Excavator</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_2" type="radio" name="CRANE_23_TypeOfObject" value="3a867adc-9cb6-451b-b129-7762a4c565a0"><label class="inline" for="r0c0m1r23f1_2">&nbsp;Fast erecting crane</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_3" type="radio" name="CRANE_23_TypeOfObject" value="9975fd85-f67e-4dfd-b01e-80d05e82e99c"><label class="inline" for="r0c0m1r23f1_3">&nbsp;Truck mounted crane</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_4" type="radio" name="CRANE_23_TypeOfObject" value="59cf23e9-7290-4eca-9e00-828fbfae4226"><label class="inline" for="r0c0m1r23f1_4">&nbsp;Tower crane</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_5" type="radio" name="CRANE_23_TypeOfObject" value="4c05acdf-2c65-4353-9699-93e8f41312b2"><label class="inline" for="r0c0m1r23f1_5">&nbsp;Elevator</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_6" type="radio" name="CRANE_23_TypeOfObject" value="d79953b5-b276-431e-8a0d-94918e351bb5"><label class="inline" for="r0c0m1r23f1_6">&nbsp;Pile Driver</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_7" type="radio" name="CRANE_23_TypeOfObject" value="4b6fbe37-dfb3-43a8-b839-966991abd4e8"><label class="inline" for="r0c0m1r23f1_7">&nbsp;Drill Tower</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_8" type="radio" name="CRANE_23_TypeOfObject" value="cc1a683c-58a4-4567-93bf-979be6e19a9c"><label class="inline" for="r0c0m1r23f1_8">&nbsp;Other (describe)</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_9" type="radio" name="CRANE_23_TypeOfObject" value="a3ff230c-10b7-42bf-b9db-a818b6909dca"><label class="inline" for="r0c0m1r23f1_9">&nbsp;Mobile tower crane</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_10" type="radio" name="CRANE_23_TypeOfObject" value="754a2090-66e7-4e68-b0c2-bfe4876aac37"><label class="inline" for="r0c0m1r23f1_10">&nbsp;Telescopic crane</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_11" type="radio" name="CRANE_23_TypeOfObject" value="88e6b2cb-4a58-438b-96db-c73d5787c411"><label class="inline" for="r0c0m1r23f1_11">&nbsp;Concrete pump</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_12" type="radio" name="CRANE_23_TypeOfObject" value="f1657cca-2c13-4568-8207-e5caf9c07332"><label class="inline" for="r0c0m1r23f1_12">&nbsp;Dump Truck</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r23f1_13" type="radio" name="CRANE_23_TypeOfObject" value="66bab9fc-1551-4160-8ae8-ed8767b86844"><label class="inline" for="r0c0m1r23f1_13">&nbsp;Drilling Machine</label></span></span></span></span></div>
+							</div>
+								<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r23af1"><label for="r0c0m1r23af1">CRANE: 23a Type of object other (description)</label><input id="r0c0m1r23af1" name="CRANE_23a_TypeOfObject_Other" type="text"></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  24 mandatory -->
+								<div class="bee-field bee-field-r0c0m1r24f1"><label for="r0c0m1r24f1">CRANE: 24 Model of object</label><input id="r0c0m1r24f1" name="CRANE_24_ModelOfObject" type="text" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  25 mandatory, 3 hidden fileds, size validation, decoding file into text -->
+								<div class="bee-field bee-field-r0c0m1r25f1"><label for="r0c0m1r25f1">CRANE: 25 File</label><input id="r0c0m1r25f1" type="file" accept="*/*" required><small id="file-status" class="file-status" aria-live="polite"></small></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  26 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r26f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r26f1">CRANE: 26 Owner or landlord</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r26f1_1" type="radio" name="CRANE_26_OwnershipType" value="0a8029e7-7195-4825-a861-2444dd13c98b" required><label class="inline" for="r0c0m1r26f1_1">&nbsp;Owner</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r26f1_2" type="radio" name="CRANE_26_OwnershipType" value="4ab558e8-43ad-4e48-8d15-c0dffe17865a"><label class="inline" for="r0c0m1r26f1_2">&nbsp;Landlord</label></span></span></span></span></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  27 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r27f1"><label for="r0c0m1r27f1">CRANE: 27 Maximum height in TAW or height above ground level (AGL), taking into account any erection height of the crane</label><input id="r0c0m1r27f1" name="CRANE_27_MaximumHeight" type="number" step="0.1" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  28 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r28f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r28f1">CRANE: 28 AGL or TAW</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r28f1_1" type="radio" name="CRANE_28_AGLorTAW" value="634b3555-9e78-4c1c-8a63-6764aeeaac86" required><label class="inline" for="r0c0m1r28f1_1">&nbsp;AGL</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r28f1_2" type="radio" name="CRANE_28_AGLorTAW" value="3a97a61f-2131-4cd6-b9a3-7c7f4936ce77"><label class="inline" for="r0c0m1r28f1_2">&nbsp;TAW</label></span></span></span></span></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  29 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r29f1"><label for="r0c0m1r29f1">CRANE: 29 Maximum working height in TAW or AGL</label><input id="r0c0m1r29f1" name="CRANE_29_MaximumWorkingHeight" type="number" step="0.1" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  30 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r30f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r30f1">CRANE: 30 AGL or TAW</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r30f1_1" type="radio" name="CRANE_30_AGLorTAW" value="634b3555-9e78-4c1c-8a63-6764aeeaac86" required><label class="inline" for="r0c0m1r30f1_1">&nbsp;AGL</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r30f1_2" type="radio" name="CRANE_30_AGLorTAW" value="3a97a61f-2131-4cd6-b9a3-7c7f4936ce77"><label class="inline" for="r0c0m1r30f1_2">&nbsp;TAW</label></span></span></span></span></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  31 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r31f1"><label for="r0c0m1r31f1">CRANE: 31 Ground level elevation (Required accuracy: 0.5 m)</label><input id="r0c0m1r31f1" name="CRANE_31_GroundLevel" type="number" step="0.1" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  32 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r32f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r32f1">CRANE: 32 Height will be modified</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r32f1_1" type="radio" name="CRANE_32_HeightWillBeModified" value="63e65d47-07fb-4a0b-9244-1f4bdf08bdb3" required><label class="inline" for="r0c0m1r32f1_1">&nbsp;YES</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r32f1_2" type="radio" name="CRANE_32_HeightWillBeModified" value="24ace01c-0e32-4958-9de8-233009b1469b"><label class="inline" for="r0c0m1r32f1_2">&nbsp;NO</label></span></span></span></span></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r33f1"><label for="r0c0m1r33f1">CRANE: 33 Modified height</label><input id="r0c0m1r33f1" name="CRANE_33_ModifiedHeight" type="number" step="0.1"></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  34 mandatory -->
+								<div class="bee-field bee-field-r0c0m1r34f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r34f1">CRANE: 34 Circle or Radius</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r34f1_1" type="radio" name="CRANE_34_CircleRadius" value="c7ea4900-add7-4ddb-86f1-a3c7e413c1a4" required><label class="inline" for="r0c0m1r34f1_1">&nbsp;Radius (operating area)</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r34f1_2" type="radio" name="CRANE_34_CircleRadius" value="b66fb09e-f82d-46ec-9852-b1f048f3fc57"><label class="inline" for="r0c0m1r34f1_2">&nbsp;Turning circle</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r34f1_3" type="radio" name="CRANE_34_CircleRadius" value="1cb1f375-b9de-408a-b888-e7454135e2f3"><label class="inline" for="r0c0m1r34f1_3">&nbsp;Radius</label></span></span></span></span></div>
+							</div>
+								<!--  ADD HERE a missing 34a FIELD; creatio code: CRANE_34a_Circle; Label: CRANE: 34a Turning circle -->
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r34af1"><label for="r0c0m1r34af1">CRANE: 34a Turning circle</label><input id="r0c0m1r34af1" name="CRANE_34a_Circle" type="number" step="0.1"></div>
+							</div>
+								<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r35f1"><label for="r0c0m1r35f1">CRANE: 34b Radius</label><input id="r0c0m1r35f1" name="CRANE_34b_Radius" type="number" step="0.1"></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r36f1"><label for="r0c0m1r36f1">CRANE: 34c Radius (operating area)</label><input id="r0c0m1r36f1" name="CRANE_34c_RadiusOperatingArea" type="number" step="0.1"></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r37f1"><label for="r0c0m1r37f1">CRANE: 35 Length of the boom</label><input id="r0c0m1r37f1" name="CRANE_35_LengthOfTheBoom" type="number" step="0.1"></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r38f1"><label for="r0c0m1r38f1">CRANE: 36 Length of the counter jib</label><input id="r0c0m1r38f1" name="CRANE_36_LengthOfTheCounterJib" type="number" step="0.1"></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r39f1"><label for="r0c0m1r39f1">CRANE: 37 Boom top height</label><input id="r0c0m1r39f1" name="CRANE_37_BoomTopHeight" type="number" step="0.1"></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r40f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r40f1">CRANE: 38 AGL or TAW</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r40f1_1" type="radio" name="CRANE_38_AGLorTAW" value="634b3555-9e78-4c1c-8a63-6764aeeaac86"><label class="inline" for="r0c0m1r40f1_1">&nbsp;AGL</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r40f1_2" type="radio" name="CRANE_38_AGLorTAW" value="3a97a61f-2131-4cd6-b9a3-7c7f4936ce77"><label class="inline" for="r0c0m1r40f1_2">&nbsp;TAW</label></span></span></span></span></div>
+							</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r41f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r41f1">CRANE: 39 Is there a secondary?</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r41f1_1" type="radio" name="CRANE_39_IsThereAsecondaryJib" value="63e65d47-07fb-4a0b-9244-1f4bdf08bdb3"><label class="inline" for="r0c0m1r41f1_1">&nbsp;YES</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r41f1_2" type="radio" name="CRANE_39_IsThereAsecondaryJib" value="24ace01c-0e32-4958-9de8-233009b1469b"><label class="inline" for="r0c0m1r41f1_2">&nbsp;NO</label></span></span></span></span></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  40 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r42f1"><label for="r0c0m1r42f1">CRANE: 40 Maximum horizontal length</label><input id="r0c0m1r42f1" name="CRANE_40_MaximumHorizontalLength" type="number" step="0.1" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  41 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r43f1"><label for="r0c0m1r43f1">CRANE: 41 How high lifted</label><input id="r0c0m1r43f1" name="CRANE_41_HowHighLifted" type="number" step="0.1" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  42 mandatory -->
+								<div class="bee-field bee-field-r0c0m1r44f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r44f1">CRANE: 42 AGL or TAW</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r44f1_1" type="radio" name="CRANE_42_AGLorTAW" value="634b3555-9e78-4c1c-8a63-6764aeeaac86"><label class="inline" for="r0c0m1r44f1_1">&nbsp;AGL</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r44f1_2" type="radio" name="CRANE_42_AGLorTAW" value="3a97a61f-2131-4cd6-b9a3-7c7f4936ce77"><label class="inline" for="r0c0m1r44f1_2">&nbsp;TAW</label></span></span></span></span></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  43 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r45f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r45f1">CRANE: 43 Is transmitting equipment used?</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r45f1_1" type="radio" name="CRANE_43_IsTransmittingEquipUsed" value="63e65d47-07fb-4a0b-9244-1f4bdf08bdb3" required><label class="inline" for="r0c0m1r45f1_1">&nbsp;YES</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r45f1_2" type="radio" name="CRANE_43_IsTransmittingEquipUsed" value="24ace01c-0e32-4958-9de8-233009b1469b"><label class="inline" for="r0c0m1r45f1_2">&nbsp;NO</label></span></span></span></span></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  43a added -->
+									<div class="bee-field bee-field-r0c0m1r45af1"><label for="r0c0m1r45af1">CRANE: 43a Transmitting equipment (description)</label><input id="r0c0m1r45af1" name="CRANE_43a_TransmittingEquipmentDescription" type="text"></div>
+							</div>
+					<div class="bee-block bee-block-1 bee-heading">
+						<h1><span class="tinyMce-placeholder">Location of the crane/object</span> </h1>
+					</div>	
+							<div class="bee-form-row">
+								<!--  44 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r46f1"><label for="r0c0m1r46f1">CRANE: 44 Street</label><input id="r0c0m1r46f1" name="CRANE_44_Street" type="text" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  45 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r47f1"><label for="r0c0m1r47f1">CRANE: 45 Number</label><input id="r0c0m1r47f1" name="CRANE_45_Number" type="text" required></div>
+							</div>
+								<div class="bee-form-row">
+									<!--  46 mandatory, validation -->
+										<div class="bee-field bee-field-r0c0m1r48f1"><label for="r0c0m1r48f1">CRANE: 46 Postal code</label><input id="r0c0m1r48f1" name="CRANE_46_PostalCode" type="text" inputmode="numeric" pattern="^\d{4}$" maxlength="4" placeholder="0000" title="Enter a 4-digit postal code (numbers only)." required></div>
+								</div>
+							<div class="bee-form-row">
+								<!--  47 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r49f1"><label for="r0c0m1r49f1">CRANE: 47 Location</label><input id="r0c0m1r49f1" name="CRANE_47_City" type="text" required></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  48 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r50f1 bee-inline-field"><span class="bee-form-choices-wrapper"><label for="r0c0m1r50f1">CRANE: 48 Exact location coordinates</label><span class="bee-form-options-align-wrapper"><span class="bee-form-options-vertical-orientation-wrapper"><span class="bee-form-option-wrapper"><input id="r0c0m1r50f1_1" type="radio" name="CRANE_48_ExactLocationCoordinates" value="079fe560-252c-4ed6-84d7-8e673985d9aa" required><label class="inline" for="r0c0m1r50f1_1">&nbsp;Lambert 72</label></span><span class="bee-form-option-wrapper"><input id="r0c0m1r50f1_2" type="radio" name="CRANE_48_ExactLocationCoordinates" value="75179fab-7f15-47d3-8674-a2ac023b5cfc"><label class="inline" for="r0c0m1r50f1_2">&nbsp;WGS84 DMS</label></span></span></span></span></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  49 validation -->
+								<div class="bee-field bee-field-r0c0m1r51f1"><label for="r0c0m1r51f1">CRANE: 49 X</label><input id="r0c0m1r51f1" name="CRANE_49_CoordinateX" type="text" inputmode="numeric" maxlength="9" placeholder="45000-300000 m"></div>
+							</div>
+							<div class="bee-form-row">
+								<!--  50 validation -->
+								<div class="bee-field bee-field-r0c0m1r52f1"><label for="r0c0m1r52f1">CRANE: 50 Y</label><input id="r0c0m1r52f1" name="CRANE_50_CoordinateY" type="text" inputmode="numeric" maxlength="9" placeholder="150000-250000 m"></div>
+							</div>
+								<div class="bee-form-row">
+									<!--  51 validation -->
+									<div class="bee-field bee-field-r0c0m1r53f1"><label for="r0c0m1r53f1">CRANE: 51 N</label><input id="r0c0m1r53f1" name="CRANE_51_CoordinateN" type="text" inputmode="numeric" maxlength="12" placeholder="DD°MM′SS,SS″"></div>
+								</div>
+								<div class="bee-form-row">
+									<!--  52 validation -->
+									<div class="bee-field bee-field-r0c0m1r54f1"><label for="r0c0m1r54f1">CRANE: 52 E</label><input id="r0c0m1r54f1" name="CRANE_52_CoordinateE" type="text" inputmode="numeric" maxlength="11" placeholder="D°MM′SS,SS″"></div>
+								</div>
+					<div class="bee-block bee-block-1 bee-heading">
+						<h1><span class="tinyMce-placeholder">Confirmation of the data entered</span> </h1>
+					</div>	
+								<div class="bee-form-row">
+									<!--  53 autofill, read-only -->
+									<div class="bee-field bee-field-r0c0m1r55f1"><label for="r0c0m1r55f1">CRANE: 53 Applicant name</label><input id="r0c0m1r55f1" name="CRANE_53_ApplicantName" type="text" readonly></div>
+								</div>
+								<div class="bee-form-row">
+									<!--  54 mandatory -->
+									<div class="bee-field bee-field-r0c0m1r56f1 bee-inline-field"><span class="bee-form-option-wrapper"><input id="r0c0m1r56f1" name="CRANE_54_Signature" type="checkbox" value="true" required><label class="inline" for="r0c0m1r56f1">&nbsp;CRANE: 54 Signature</label></span></div>
+								</div>
+							<div class="bee-form-row">
+								<div class="bee-field bee-field-r0c0m1r57f1">
+									<div class="bee-button-container"><button id="r0c0m1r57f1" name="submit" type="submit" value="Submit">Submit</button></div>
+								</div>
+							</div>
+								<div class="bee-form-row"><input id="r0c0m1r58f1" name="EntityName" type="hidden" value="FormSubmit"></div>
+								<div class="bee-form-row"><input id="r0c0m1r59f1" name="FormId" type="hidden" value="bde1428a-2b76-47fe-89f6-52d64c62a23e"></div>
+								<div class="bee-form-row"><input id="FileBase64" name="FileBase64" type="hidden"></div>
+								<div class="bee-form-row"><input id="FileMimeType" name="FileMimeType" type="hidden"></div>
+								<div class="bee-form-row"><input id="FileName" name="FileName" type="hidden"></div>
+							</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- VALIDATION SCRIPTS -->
+	<script defer src="./CraneFormEN.js"></script>
+	</body>
+
+</html>
